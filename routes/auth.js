@@ -1,4 +1,3 @@
-// routes/auth.js
 const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
@@ -45,6 +44,11 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+// Cerrar sesión y eliminar cookie
+router.post("/logout", (req, res) => {
+  res.clearCookie("token").send("Logged out successfully");
+});
+
 router.get("/logged-in", passport.authenticate('jwt', { session: false }), (req, res) => {
   try {
     res.json({ user: req.user });
@@ -55,3 +59,4 @@ router.get("/logged-in", passport.authenticate('jwt', { session: false }), (req,
 });
 
 module.exports = router;
+

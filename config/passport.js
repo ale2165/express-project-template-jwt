@@ -1,4 +1,4 @@
-// config/passport.js
+
 const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
 const prisma = require("../prisma");

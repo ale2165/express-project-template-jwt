@@ -12,3 +12,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Emplazamiento {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  direccion   String
+  equipos     Equipo[]  @relation("equiposPorEmplazamiento")
+}
+
+model Equipo {
+  id               Int            @id @default(autoincrement())
+  nombre           String
+  descripcion      String
+  serialNumber     String
+  emplazamiento    Emplazamiento  @relation("equiposPorEmplazamiento", fields: [emplazamientoId], references: [id])
+  emplazamientoId  Int
+}
+

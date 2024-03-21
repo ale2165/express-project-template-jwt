@@ -14,3 +14,8 @@ model User {
   email     String   @unique
   password  String
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 453ada263305d647ef0f4176f9d9697fc7062cfa
